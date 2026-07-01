@@ -496,7 +496,7 @@ Accept wildcard characters: False
 ```
 
 ### -Targets
-A Target identifies which Azure resource(s) a change is authorized against.
+The Target which a change is authorized against.
 Supported keys include: resourceId, subscriptionId (required if resourceId is omitted), resourceGroupName, resourceType, resourceName, httpMethod.
 
 ```yaml
