@@ -12,7 +12,7 @@ The -Targets parameter automatically sets:
 - ChangeDefinitionDetail = { targets: [...] }
 
 .PARAMETER Targets
-The Target which a change is authorized against. Supported keys include:
+An array of hashtables, each representing a Target which a change is authorized against. Supported keys include:
 - resourceId: The ARM resource Id
 - subscriptionId: The Subscription Id. Required when resourceId is not provided
 - resourceGroupName: The name of the resource group
@@ -76,7 +76,7 @@ function New-AzChangeSafetyChangeRecord_Targets {
         [string]
         $SubscriptionId,
 
-        [Parameter(Mandatory, HelpMessage = "The Target which a change is authorized against. Supported keys include: resourceId, subscriptionId (required if resourceId is omitted), resourceGroupName, resourceType, resourceName, httpMethod.")]
+        [Parameter(Mandatory, HelpMessage = "An array of hashtables, each representing a Target which a change is authorized against. Supported keys include: resourceId, subscriptionId (required if resourceId is omitted), resourceGroupName, resourceType, resourceName, httpMethod.")]
         [object[]]
         $Targets,
 
