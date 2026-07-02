@@ -30,7 +30,7 @@ New-AzChangeSafetyChangeRecord -Name "storageAccountCleanup" `
     -RolloutType "Hotfix" `
     -Description "Delete unused storage account for cleanup" `
     -Targets @{
-        subscriptionId = (Get-AzContext).Subscription.Id
+        subscriptionId = "00000000-0000-0000-0000-000000000000"
     }
 
 Creates a stageless change record authorized against the current subscription.
@@ -53,7 +53,7 @@ Creates a change record with multiple targets (VMs and Storage Accounts).
 .EXAMPLE
 New-AzChangeSafetyChangeRecord -Name "mychange" -ResourceGroupName "rg-prod-webapp" -Targets @{
     resourceType = "Microsoft.Web/sites"
-    subscriptionId = (Get-AzContext).Subscription.Id
+    subscriptionId = "00000000-0000-0000-0000-000000000000"
     resourceGroupName = "rg-prod-webapp"
 } -TargetName "ProductionWebApps"
 
