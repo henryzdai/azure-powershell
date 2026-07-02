@@ -39,11 +39,11 @@ Creates a stageless change record authorized against the current subscription.
 New-AzChangeSafetyChangeRecord -Name "mychange" -ResourceGroupName "rg-changeops" -Targets @(
     @{
         resourceType = "Microsoft.Compute/virtualMachines"
-        subscriptionId = (Get-AzContext).Subscription.Id
+        subscriptionId = "00000000-0000-0000-0000-000000000000"
     },
     @{
         resourceType = "Microsoft.Storage/storageAccounts"
-        subscriptionId = (Get-AzContext).Subscription.Id
+        subscriptionId = "00000000-0000-0000-0000-000000000000"
         resourceGroupName = "rg-prod-storage"
     }
 )
