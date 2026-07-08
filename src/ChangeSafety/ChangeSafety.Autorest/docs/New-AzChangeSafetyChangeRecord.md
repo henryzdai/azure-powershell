@@ -518,8 +518,7 @@ Accept wildcard characters: False
 ```
 
 ### -Targets
-The Target which a change is authorized against.
-Supported keys include: resourceId, subscriptionId (required if resourceId is omitted), resourceGroupName, resourceType, resourceName, httpMethod.
+An array of hashtables, each representing a Target which a change is authorized against. Supported keys include: resourceId, subscriptionId (required if resourceId is omitted), resourceGroupName, resourceType, resourceName, httpMethod.
 
 ```yaml
 Type: System.Object[]

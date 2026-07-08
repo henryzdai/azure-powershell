@@ -12,7 +12,7 @@ The -Targets parameter automatically sets:
 - ChangeDefinitionDetail = { targets: [...] }
 
 .PARAMETER Targets
-The Target which a change is authorized against. Supported keys include:
+An array of hashtables, each representing a Target which a change is authorized against. Supported keys include:
 - resourceId: The ARM resource Id
 - subscriptionId: The Subscription Id. Required when resourceId is not provided
 - resourceGroupName: The name of the resource group
@@ -30,7 +30,7 @@ New-AzChangeSafetyChangeRecord -Name "storageAccountCleanup" `
     -RolloutType "Hotfix" `
     -Description "Delete unused storage account for cleanup" `
     -Targets @{
-        subscriptionId = (Get-AzContext).Subscription.Id
+        subscriptionId = "00000000-0000-0000-0000-000000000000"
     }
 
 Creates a stageless change record authorized against the current subscription.
@@ -39,11 +39,11 @@ Creates a stageless change record authorized against the current subscription.
 New-AzChangeSafetyChangeRecord -Name "mychange" -ResourceGroupName "rg-changeops" -Targets @(
     @{
         resourceType = "Microsoft.Compute/virtualMachines"
-        subscriptionId = (Get-AzContext).Subscription.Id
+        subscriptionId = "00000000-0000-0000-0000-000000000000"
     },
     @{
         resourceType = "Microsoft.Storage/storageAccounts"
-        subscriptionId = (Get-AzContext).Subscription.Id
+        subscriptionId = "00000000-0000-0000-0000-000000000000"
         resourceGroupName = "rg-prod-storage"
     }
 )
@@ -53,7 +53,7 @@ Creates a change record with multiple targets (VMs and Storage Accounts).
 .EXAMPLE
 New-AzChangeSafetyChangeRecord -Name "mychange" -ResourceGroupName "rg-prod-webapp" -Targets @{
     resourceType = "Microsoft.Web/sites"
-    subscriptionId = (Get-AzContext).Subscription.Id
+    subscriptionId = "00000000-0000-0000-0000-000000000000"
     resourceGroupName = "rg-prod-webapp"
 } -TargetName "ProductionWebApps"
 
@@ -76,7 +76,7 @@ function New-AzChangeSafetyChangeRecord_Targets {
         [string]
         $SubscriptionId,
 
-        [Parameter(Mandatory, HelpMessage = "The Target which a change is authorized against. Supported keys include: resourceId, subscriptionId (required if resourceId is omitted), resourceGroupName, resourceType, resourceName, httpMethod.")]
+        [Parameter(Mandatory, HelpMessage = "An array of hashtables, each representing a Target which a change is authorized against. Supported keys include: resourceId, subscriptionId (required if resourceId is omitted), resourceGroupName, resourceType, resourceName, httpMethod.")]
         [object[]]
         $Targets,
 
